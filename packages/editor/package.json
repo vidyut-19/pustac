@@ -1,0 +1,28 @@
+{
+  "name": "@pustac/editor",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "test": "vitest"
+  },
+  "dependencies": {
+    "lexical": "^0.36.1",
+    "@lexical/react": "^0.36.1",
+    "@lexical/rich-text": "^0.36.1",
+    "@lexical/list": "^0.36.1",
+    "@lexical/code": "^0.36.1",
+    "@lexical/link": "^0.36.1",
+    "@lexical/markdown": "^0.36.1",
+    "@lexical/selection": "^0.36.1",
+    "@lexical/utils": "^0.36.1",
+    "preact": "^10.27.2",
+    "@preact/signals": "^2.3.1"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.2",
+    "@types/node": "^20.19.17"
+  }
+}
