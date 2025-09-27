@@ -1,1 +1,26 @@
-node_modules
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+**/dist/
+.turbo/
+
+# TypeScript
+*.tsbuildinfo
+
+# Logs
+*.log
+pnpm-debug.log*
+
+# Environment & local config
+.env
+.env.*
+.DS_Store
+.idea/
+.vscode/
+
+# Cache
+.pnpm-store/
+.cache/
+**/.cache/

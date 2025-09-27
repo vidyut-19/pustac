@@ -8,6 +8,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@pustac/editor": "workspace:*",
     "@pustac/ui": "workspace:*",
     "preact": "^10.27.2",
     "@preact/signals": "^2.3.1",

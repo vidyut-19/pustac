@@ -1,4 +1,3 @@
-import { EditorState } from 'lexical';
 
 export interface EditorConfig {
   theme?: any;

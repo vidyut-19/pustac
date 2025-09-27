@@ -16,6 +16,15 @@ export {
   loadLink, 
   loadMarkdown 
 } from './lazy-loading';
+export { 
+  PustacHeadingNode,
+  PustacQuoteNode,
+  PustacListNode,
+  PustacListItemNode,
+  customNodes
+} from './nodes';
+export { AutoFormattingPlugin } from './plugins/auto-formatting';
+export { LazyLoadingPlugin, useLazyFeature } from './plugins/lazy-loading';
 export type { 
   EditorConfig, 
   EditorState, 

@@ -1,10 +1,10 @@
 // Lazy loading utilities for Lexical features to minimize initial bundle size
 
-export const lazyLoadRichText = () => import('@lexical/rich-text');
-export const lazyLoadList = () => import('@lexical/list');
-export const lazyLoadCode = () => import('@lexical/code');
-export const lazyLoadLink = () => import('@lexical/link');
-export const lazyLoadMarkdown = () => import('@lexical/markdown');
+export const lazyLoadRichText = (): Promise<any> => import('@lexical/rich-text');
+export const lazyLoadList = (): Promise<any> => import('@lexical/list');
+export const lazyLoadCode = (): Promise<any> => import('@lexical/code');
+export const lazyLoadLink = (): Promise<any> => import('@lexical/link');
+export const lazyLoadMarkdown = (): Promise<any> => import('@lexical/markdown');
 
 // Feature flags to track what's been loaded
 const loadedFeatures = new Set<string>();

@@ -1,14 +1,16 @@
-import { h } from 'preact';
-import { useEffect, useRef, useState } from 'preact/hooks';
+import { useState } from 'preact/hooks';
 import { LexicalComposer } from '@lexical/react/LexicalComposer';
 import { RichTextPlugin } from '@lexical/react/LexicalRichTextPlugin';
 import { ContentEditable } from '@lexical/react/LexicalContentEditable';
 import { HistoryPlugin } from '@lexical/react/LexicalHistoryPlugin';
 import { OnChangePlugin } from '@lexical/react/LexicalOnChangePlugin';
 import { LexicalErrorBoundary } from '@lexical/react/LexicalErrorBoundary';
-import { $getRoot, $getSelection, EditorState } from 'lexical';
+import { $getRoot, $getSelection, $isRangeSelection, EditorState } from 'lexical';
 import { editorActions, focusMode } from './state';
 import { preloadFeatures } from './lazy-loading';
+import { customNodes } from './nodes';
+import { AutoFormattingPlugin } from './plugins/auto-formatting';
+import { LazyLoadingPlugin } from './plugins/lazy-loading';
 
 // Basic theme for the editor
 const theme = {
@@ -68,6 +70,7 @@ const theme = {
 // Basic nodes for now (we'll add more with lazy loading)
 const nodes = [
   // Core nodes are included by default
+  ...customNodes,
 ];
 
 function onError(error: Error) {
@@ -93,7 +96,7 @@ function StatePlugin() {
           editorActions.setSelection(selection !== null);
           
           // Update current paragraph (for focus mode)
-          if (selection) {
+          if ($isRangeSelection(selection)) {
             const anchorNode = selection.anchor.getNode();
             const paragraph = anchorNode.getParent();
             if (paragraph && paragraph.getType() === 'paragraph') {
@@ -152,6 +155,8 @@ export function PustacEditor({ initialConfig, className = '' }: PustacEditorProp
           <HistoryPlugin />
           <StatePlugin />
           <FocusPlugin />
+          <AutoFormattingPlugin />
+          <LazyLoadingPlugin />
         </div>
       </LexicalComposer>
     </div>
